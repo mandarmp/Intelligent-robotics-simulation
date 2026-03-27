@@ -1,0 +1,5 @@
+string tablename
+bool operation  #for enqueue 1 and for dequeue 0
+---
+bool success
+string msg

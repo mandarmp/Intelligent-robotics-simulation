@@ -1,0 +1,4 @@
+
+---
+#bool   type             #1 for serving and 0 for clearing
+string queuestatus

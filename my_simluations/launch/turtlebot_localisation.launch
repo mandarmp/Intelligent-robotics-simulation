@@ -1,0 +1,9 @@
+<launch>
+
+
+  <!-- AMCL -->
+  <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch" >
+    <arg name="map_file" value="$(find my_simluations)/data/cafe_map.yaml"/>
+  </include>
+
+</launch>

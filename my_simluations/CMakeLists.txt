@@ -61,6 +61,9 @@ add_service_files(
    tables.srv
    goal.srv
    ui.srv
+   Queue.srv
+   QueueStatus.srv
+   QueueManage.srv
 
 )
 

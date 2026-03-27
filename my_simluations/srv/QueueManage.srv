@@ -1,0 +1,4 @@
+bool type #for served queue 1 and clear queue 0
+int32 tablenumber
+---
+bool success

@@ -4,8 +4,18 @@
 <node pkg="my_simluations" name = "main" type="main.py" output="screen">
 </node>
 
+<!--
 <node pkg="my_simluations" name = "server" type="server.py" output="screen">
 </node>
+-->
+
+
+<node pkg="my_simluations" name = "UI" type="ui.py" output="screen">
+</node>
+
+<node pkg="my_simluations" name = "queue_server" type="queue_server.py" output="screen">
+</node>
+
 
 <node pkg="my_simluations" name = "pathfinder" type="pathfinder.py" output="screen">
 </node>

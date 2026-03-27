@@ -8,10 +8,16 @@ from my_simluations.srv import ui as _UI
 import time
 
 #drop off points for tables; format x,y,yaw
-tables_drop_off = [[1,2,1.2],
-          [2.1,3,1.4],[6,3,1.4],[2.1,3,1.4],[2.1,3,1.4],[2.1,3,1.4],[2.1,3,1.4],[2.1,3,1.4],]
+tables_drop_off = [[12.6,23.4,1.2],
+          [9.75,23.1,1.4]
+          ,[8.1,26,1.4]
+          ,[12.6,26.6,1.4]
+          ,[12.5,28.05,1.4]
+          ,[6.2,29.5,1.4]
+          ,[9.75,29.9,1.4]
+          ,[9.65,26.7,1.4]]
 
-kitchen_coordinates = [-1,-1.2,0]
+kitchen_coordinates = [6.9,16.8,0]
 
 #print(tables_drop_off[1][2])
 #reminder of how it works
@@ -21,12 +27,14 @@ kitchen_coordinates = [-1,-1.2,0]
 #tables_receive = rospy.Service('/tables_', _TABLES, )
 
 def request_tables_client():
-    rospy.wait_for_service('tables')
+    rospy.wait_for_service('/queuemanager')
     flipper = 1
     try:
 
-        tables_return = rospy.ServiceProxy('tables', _TABLES)
+        tables_return = rospy.ServiceProxy('/queuemanager', _TABLES)
         resp = tables_return(flipper)
+        print("Deliver: "+str(resp.table_deliver))
+        print("Clean: "+str(resp.table_clean))
         return resp
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
@@ -104,7 +112,7 @@ if __name__ == "__main__":
             print("tables_received")
 
         if(out != -1):
-            UI_wait("Please place food to be delivered")
+            UI_wait("Please place food to be delivered to table "+str(y.table_deliver))
             print("going")
             request_location_client(tables_drop_off[out-1][0],tables_drop_off[out-1][1],tables_drop_off[out-1][2])
             time.sleep(5)
